@@ -1,3 +1,23 @@
+#sort the number::
+l=[1,2,3,5,4,2,6,7]
+n=len(l)
+for i in range(n-1):
+    for j in range(n-i-1):
+        if l[j]>l[j+1]:
+            l[j+1],l[j]=l[j],l[j+1]
+print(l)
+
+#factoraial:
+num=int(input('Enter the number::'))
+if num==0:
+    print(f'The factorial of {num} is 1')
+else:
+    res=1
+    for no in range(1,num+1):
+        res*=no
+    print(f'The factorial of {num} is {res}')
+
+
 #1)pp for identity matrix----->
 for i in range(5):
     for j in range(5):
@@ -328,7 +348,7 @@ while s:
     s=s[2:]
 print(l)
 
-#17) pp for finding the missing number in list.
+#17) pp for finding the missing number in list of continuos number::.
 l=[1,2,4,5,7,8,9,10]
 for i in range(len(l)-1):   #---->to avoid index out of rangge focus on range()
     if l[i+1]-1!=l[i]:      # here backwors to forward
@@ -346,6 +366,16 @@ l=[1,2,4,5,7,8,9,10]
 for i in range(1,len(l)-1):
     if l[i]-l[i-1]!=1:
         print('Misiing number is:',l[i]-1)
+
+#------in case if diff etween number is greater than 1::
+for i in range(len(l)-1):
+    if l[i+1]-l[i]!=1:
+        l.insert(l.index(l[i])+1,l[i]+1)
+print(l)
+
+res=[l.insert(l.index(l[i])+1,l[i]+1) for i in range(len(l)-1) if l[i+1]-l[i]!=1]
+print(l)
+
 
 #18)P to read N numbers and print the series 1+2+.....+N
 
@@ -390,13 +420,20 @@ def main():
 if __name__=='__main__':
     main()
 
-#22)PP to accept target value and print the combination two no whose addition leads to the target
-tg=15
-for i in range(1,tg):
-    for j in range(1,tg):
-        if i+j==tg:
-            print((i,j))
+#22)PP to accept target value and print the combination two no whose addition leads to the target:::
 
+l=[1,3,2,4,5,7,6,8,6,9]
+target = int(input('Enter the number::'))
+no=0
+for i,j in enumerate(l):
+    for k in l[i+1:]:
+        if j+k==target:
+            print((j,k))
+            no+=1
+print(no)
+
+#------importanat::  l[i+1:]--->in slicing it does not show out of range error
+#---->l[i+1]-----> in such case it will show if that indexed element not present
 
 result=[(i,j ) for i in range(1,tg) for j in range(1,tg) if i+j==tg] #-------> is single condition --->at last
 print(result)
@@ -410,7 +447,7 @@ while l:
         l=None
     else:
         d[l[0]]=l[1]
-        l=l[2:]
+    l=l[2:]
 print(d)
 
 l=[1,2,3,4,5]
@@ -545,6 +582,18 @@ for i in l:
     re.append('-'.join(l1))
 print(re)
 
+# find below output::
+"""1 2 3 4 5
+1 2 3 4
+1 2 3
+1 2
+1"""
+
+for i in range(1,7):
+    for k in range(1,-i+7):
+        print(k,end=' ')
+    print()
+
 '''l2=['Adelia Clooney Zeidler(Sibling)','Monsita Ferrer(Cousin)','Rafael Ferrer(Cousin)',
     'Miguel Ferrer(Cousin)','Tessa Ferrer(Cousin)','Betty Clooney(Aunt or Uncle)','Rosemary Clooney(Aunt or Uncle)']'''
 #output={'Adelia': 'Sibling', 'Monsita': 'Cousin', 'Rafael': 'Cousin', 'Miguel': 'Cousin', 'Tessa': 'Cousin', 'Betty': 'Uncle', 'Rosemary': 'Uncle'}
@@ -565,58 +614,15 @@ for k in l2:
 res=[i for i in l2 if i.endswith('(Cousin)')]
 print(res)
 
+#max function::
+res=max(files,key=(lambda f:os.path.getctime(os.path.join(r'C:\Users\Admin\Desktop\practice',f)))))
 
 
-#31)DEcorator function application for calculatiing function execution time::
-import time
-def decorator(funct):
-    def wrapper():
-        start=time.time()
-        funct()
-        end=time.time()
-        return end-start
-    return wrapper
 
-@decorator
-def funct():
-    time.sleep(5)
-    res=[i*i for i in range(100,200)]
 
-print(funct())
 
-#32)Inheritance example::
-class studentdet():
-    def __init__(self,name,age):
-        self.name=name
-        self.age=age
-    def show(self):
-        print('Name:',self.name)
-        print('Age:',self.age)
 
-class studentdet_update(studentdet):
-    def __init__(self,name,age,city):
-        super().__init__(name,age)
-        self.city=city
-    def show(self):
-        super().show()
-        print('city:',self.city)
-obj=studentdet_update('Avinash',25,'Pune')
-obj.show()
 
-#Abstarction::
-from  abc  import ABC,abstractmethod
 
-class Vehicle(ABC):
-    def __init__(self,model,mileage):
-        self.model=model
-        self.mileage=mileage
-    @abstractmethod
-    def show(self):
-        pass
 
-class Car(Vehicle):
-    def show(self):
-        print(f'My car model is {self.model} and has mileage of {self.mileage}')
 
-obj=Car('Honda',34)
-obj.show()
