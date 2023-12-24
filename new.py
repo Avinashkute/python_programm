@@ -139,3 +139,25 @@ def funct():
     res=[i*i for i in range(100,200)]
 
 print(funct())
+
+#inheritance
+class parent:
+    def __init__(self, name):
+        self.name = name
+
+    def sample(self):
+        print('NAME', self.name)
+
+
+class child(parent):
+    def __init__(self, name, age):
+        super().__init__(name)
+        self.age = age
+
+    def sample(self):
+        super().sample()
+        print('AGE', self.age)
+
+
+obj = child('Avinash', 12)
+obj.sample()

@@ -1,3 +1,18 @@
+#merge two dictionaries::
+d={'a':1,'b':2}
+d1={'c':3,'d':4,'a':3}
+
+merged_dict={**d,**d1}
+print(merged_dict)
+
+for i in d1:
+    d[i]=d1[i]
+print(d)
+
+d.update(d1)
+print(d)
+print(d1)
+
 #sort the number::
 l=[1,2,3,5,4,2,6,7]
 n=len(l)
@@ -54,6 +69,23 @@ for i in l:
         print(i)
 
 #3)pp for nth largest number:
+try:
+    choice = int(input('Enter the nth lrgest number::'))
+    if 0<choice <= len(l):
+
+        for i in l:
+            res_set = set({})
+            for k in l:
+                if k <= i:
+                    res_set.add(k)
+            if choice == len(res_set):
+                print(i)
+    else:
+        print('Choice out of range')
+
+except Exception as e:
+    print('Error is :', e)
+
 def large(l,x):
     if 0<x<=len(l):
         l=list(l)
@@ -242,25 +274,23 @@ while no>0:
 print(result)
 #---------------------------------------------------------------------------
 #13) PP to print palindrome numbers in range 100 -500
+def eversed(no):
+    res=0
+    while no:
+        num=no%10
+        res*=10
+        res=res+num
+        no=no//10
+    return res
+
+result=list(filter(lambda x:eversed(x)==x,[i for i in range(100,200)]))
+print(result)
 
 list_no=[i for i in range(101,201) if str(i)==str(i)[::-1]]
 print(list_no)
 
 fil_no=list(filter(lambda x:str(x)==str(x)[::-1], [x for x in range(101,201)]))
 print(fil_no)
-
-def reverse(no):
-    res=0
-    while no:
-        num=no%10
-        no=no//10
-        res*=10                #---------->most important..
-        res+=num
-    return res
-
-for i in range(100,210):
-    if i==reverse(i):
-        print(i)
 def reve_no(no):
     if str(i)==str(i)[::-1]:
         return i
