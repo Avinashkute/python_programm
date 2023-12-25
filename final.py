@@ -378,6 +378,9 @@ while s:
     s=s[2:]
 print(l)
 
+result=[s[i:i+2] for i in range(0,len(s),2)]
+print(result)
+
 #17) pp for finding the missing number in list of continuos number::.
 l=[1,2,4,5,7,8,9,10]
 for i in range(len(l)-1):   #---->to avoid index out of rangge focus on range()
@@ -398,10 +401,12 @@ for i in range(1,len(l)-1):
         print('Misiing number is:',l[i]-1)
 
 #------in case if diff etween number is greater than 1::
-for i in range(len(l)-1):
-    if l[i+1]-l[i]!=1:
-        l.insert(l.index(l[i])+1,l[i]+1)
-print(l)
+for i,k in enumerate(list_no):
+    if i+1<len(list_no):
+        if list_no[i + 1] - k != 1:
+            list_no.insert(i + 1, k + 1)
+            print(k+ 1)
+print(list_no)
 
 res=[l.insert(l.index(l[i])+1,l[i]+1) for i in range(len(l)-1) if l[i+1]-l[i]!=1]
 print(l)
