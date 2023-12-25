@@ -413,7 +413,7 @@ print(l)
 
 
 #18)P to read N numbers and print the series 1+2+.....+N
-
+var=a
 no=int(input('enter the number:'))
 res='+'.join((str(i) for i in range(1,no+1)))
 print(res)
