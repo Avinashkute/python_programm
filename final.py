@@ -633,6 +633,7 @@ for i in range(1,7):
     'Miguel Ferrer(Cousin)','Tessa Ferrer(Cousin)','Betty Clooney(Aunt or Uncle)','Rosemary Clooney(Aunt or Uncle)']'''
 #output={'Adelia': 'Sibling', 'Monsita': 'Cousin', 'Rafael': 'Cousin', 'Miguel': 'Cousin', 'Tessa': 'Cousin', 'Betty': 'Uncle', 'Rosemary': 'Uncle'}
 d={}
+'My name is Avinash'
 for i in l2:
     res=i.split(' ')
     d[res[0]]=res[-1].split('(')[-1][:-1]
