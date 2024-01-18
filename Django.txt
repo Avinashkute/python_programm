@@ -1,0 +1,151 @@
+#Virtual env
+>>python -m venv env_name
+>>env_name\Scripts\activate
+
+#How to create requiement .txt file::
+>>Manually
+ ex:Django==3.2.11
+>>pip freeze > requirements.txt  --(to craete automatically)
+
+#how to install requrement.txt::
+>>pip istall -r requirments.txt
+>>pip install -r requirements.txt --upgrade     --(if newly added any dependency)
+
+#how to create a relationship btween tables in  django:
+
+>>>One to one:
+class person(model.models):
+    name=models.name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class profile(model.models):
+    bio=models.CharField(max_lenght=100)
+    person=OneToOneField(person,on_delete=models.CASCADE)
+
+                               on_delete: determines how the relationship between models should be
+                                          handled when the referenced object is removed
+                               >> models.CASCADE-->delete object refering to respective referenced object
+                               >>models.PROTECT-->Prevent deletion of the referenced object by raising a ProtectedError
+                               >>models.SET_NULL-->Set the foreign key to NULL when the referenced object is deleted(NULL=True)
+                               >>models.SET_DEFAULT-->Set the foreign key to its default value when the referenced object is deleted.
+>>One-to-Many Relationship:
+ models.ForeignKey()
+>>Many to Many Relationship:
+ models.ManyToManyField()
+-------------------------------------------------------------------------------------------------------------------------
+def __str__(self):
+    return self.name---->give human readable string representation of the class object.
+------------------------------------ ------------------------------------ ------------------------------------ 
+
+#diff between django-orm and sql alchemy::
+        orm                    |                sql 
+------------------------------------------------------------------
+1) Integrated with the Django  |1)Independant of web framework
+   web framework.              |  or stadalone library.             
+                               |
+2) Primarily focused on        |2) relational databases and             
+   relational databases        |         NoSQL databases.         
+
+3)high-level query language    |3)raw SQL expressions or query language(diff syntax -queryset API)
+  (queryset API)                    and ORM system
+
+4)less flexible                | 4)highly flexible and can perform fine sql queries.
+                                     (execute stored procedure and triggers)
+----------------------------------------------------------------------------------------
+
+#SQL ALCHEMY::
+-Definr in seprate module-->sqlalchemy_config.py
+
+1)pip install SQLAlchemy
+
+2)from sqlalchemy import create_engine, Table, MetaData
+
+3)Create a Database Engine:
+  >DATABASE_URL = 'sqlite:///example.db'
+  >engine = create_engine(DATABASE_URL, echo=True)---->echo allows result to print in console.
+
+4)Define metadata and table
+ >metadata = MetaData(bind=engine)  --->store the schema information.
+ >your_table = Table('your_table', metadata, autoload=True)  -->An instance of Table
+
+5)Create a Database Connection:
+ >connection = engine.connect()
+
+6)Execute a SELECT Query:
+select_query = your_table.select()
+result = connection.execute(select_query)
+rows = result.fetchall()---> returns them as a list of tuples.
+
+--------------------------------------------------------------------------------------------
+#django-orm::
+>>queryset = MyModel.objects.filter(name='example')
+>>queryset = MyModel.objects.filter(name='example', category='example_category')-->AND condition
+
+>>from django.db.models import Q
+  >queryset = MyModel.objects.filter(Q(name='example') | Q(category='example_category'))
+>>queryset = MyModel.objects.order_by('name') / ('-name')--> for descending
+
+>>Aggergation::
+>count = MyModel.objects.count()
+>total = MyModel.objects.aggregate(Sum('quantity'))
+>average = MyModel.objects.aggregate(Avg('price'))
+
+-----------------------------------------------------------------------------------------
+Q. What are the sessions?
+>>a session refers to the period of time during which a user interacts with a web application or
+  website. Sessions are a way to store information about a user across multiple requests and responses.  
+  They allow web applications to maintain state and provide a personalized experience to users
+
+
+
+
+------------------------------------------------------------------------------------------------
+#latest issue faced::
+
+>>>Related to database connection:
+--->Users reported intermittent errors when trying to retrieve or update data. 
+   
+  challenges:
+             1)The error occurs Occasionally and was not consistent.
+             2)There are no clear error messages, and users receive generic error responses.
+                ex:"An unexpected error occurred. Please try again later."
+   solution:
+             1)Collaborate with Database team, if any error from there side.
+             2)Collected Error Information:log files
+             3)Database config
+             4)During the code review,came across recent  changes in database connection pool config.
+                 intended to optimize resource usage.
+              during periods of high traffic, the default connection pool settings are insufficient,
+               leading to intermittent connection timeouts.
+             5)adjusting settings such as the maximum number of connections and timeout values
+
+
+-------------------------------------------------------------------------------------------------------
+#AWS::
+
+>>S3:::
+-s3 is an object storage service provided by AWS which stores data as object.
+-highly scalable,can store an unlimited number of objects.
+-can store::1)Text and Binary Data.
+            2)media file.
+            3)Backup and restore data.
+            4)Straming data.             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,132 @@
+##Matrix solution::::
+s = "My name is Avinash....."
+
+res_str=''
+res_com=''
+for item in s:
+    if item.isalnum():
+        res_str+=item.lower()
+        res_com=item.lower()+res_com
+
+if res_str==res_com:
+    print('True')
+else:
+    print('False')
+
+#quetions:
+1)signal
+2)diff between class based and funcion based api
+3)token in django
+4)custom authentication
+5)unittest
+6)postamn
+7)swagger
+8)linux
+
+------------------------------------------------------------
+class Role(models.Model):
+    name = models.CharField(max_length=100)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+#Django -ORM 
+quert_bj=Role.objects.get(name__icontains='manager')
+quert_bj=Employee.objects.filter(role__name__icontains='Developer')
+
+=========================================================================
+##Socity generele::
+1)regex
+2)sql-join,find duplicte data,
+3)pandas-Id	Employee	Company 3	Company 2	Company 1	DOJ
+  fi      1      abc              -                  e             d            12-3-2020
+create new column wwith latest company
+4)deep project 
+5)rest api status code
+6)
+
+===========================================================================
+##cognizant:
+1)into
+2)project
+3)list & tuple
+4)create genrator
+5)dataframe --pandas
+6)python path
+7)oops
+8)super()
+9)method overloading
+10)delete file
+11)__init__
+12)star problem python
+12.1)given string find the least duplicate character
+13)decorator
+14)inheritance
+15)diff--map and reduce
+16)static vs class method
+17)signal
+18)monkey patching
+============================================================================
+##datamatica:
+---->1st round::
+1)intro
+2)project
+3)python -code 
+4)sql qury--2nd max salary
+5)pass keyword
+6)diff betweeen where and having
+7)aggre gate function
+8)set operator
+9)join
+8)s3--what kind of file we can store in s3
+10)gcp
+11)input_string = "my name is Avinash"
+    o/p = "Avinash is name my "
+12)input= 'AABBCCDD'
+   O/P = XXYYZZVV
+
+--->2 nd Round::
+-encoding
+-intro--strenght/weakness
+-create csv file and read using pandas
+-diff between map and apply function
+-regex
+ +functions
+ +ex:My name  is Avnash.
+     +give me string after --->name is:
+-sql
+-git--all command ex::one file on repo clone-modify-again push back
+-django-create virtual envi-activate
+-how to check pandas version--->import pandas as pd
+                               print(pd.__version__)
+-how to multiline comment 
+-lets cosider i am having csv file containg sql quries and also other
+ stuff and i have to run only sql quries and store its result in file in pythn write a code
+=============================================================================================
+#johndere:
+-Intro
+-print(bool('False'))
+-inbuilt debugger
+-AWS services
+-Deployment 
+-docker command
+-how to handle null values.
+-wahts kind of data u handled in pandas and what u done.
+-latest issue you faced.
+-how do u handle dependencies in developement.
+-code review
+=============================================================
+#
+
+
+
+
+
+
+
+
+
+
+
+
+            

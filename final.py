@@ -1,3 +1,29 @@
+#reverse the string::
+input_string = "Avinash is name my"
+#o/p = "Avinash is name my "
+list_split=input_string.split(' ')
+reversed_var=' '.join(list_split[::-1])
+print(reversed_var)
+
+res=[]
+input_string = "my name is Avinash"
+#o/p = "Avinash is name my "
+list_split=input_string.split(' ')
+for i in range(len(list_split)):
+    res.append(list_split[len(list_split)-1-i])
+print(' '.join(res))
+
+#sort dictionary:
+dict_num={'a':101,'c':302,'d':103,'b':204}
+result={i:dict_num[i] for i in sorted(dict_num)}
+res_dict={}
+for i in sorted(dict_num):
+    res_dict[i]=dict_num[i]
+print(dict(sorted(dict_num.items(),key=lambda x:x[0])))     #--------->according to key
+
+print(dict(sorted(dict_num.items(),key=lambda x:x[1])))   #----->according to the values
+
+
 #merge two dictionaries::
 d={'a':1,'b':2}
 d1={'c':3,'d':4,'a':3}
@@ -24,7 +50,7 @@ print(l)
 
 #factoraial:
 num=int(input('Enter the number::'))
-if num==0:
+if num==0 or num==1:
     print(f'The factorial of {num} is 1')
 else:
     res=1
@@ -49,7 +75,7 @@ for i in range(5):
 for i in l:
     print(i)
 
-#2) find max and min number
+#2) find max and min number:
 
 l=[1,3,5,3,6,8,9,5,7]  #----->for min number
 min_no=l[0]
@@ -144,7 +170,7 @@ def reverse_no(no):
 print(reverse_no(12345))
 
 res=0
-while no>0:
+while no:
     x=no%10
     no=no//10
     res*=10
@@ -274,7 +300,7 @@ while no>0:
 print(result)
 #---------------------------------------------------------------------------
 #13) PP to print palindrome numbers in range 100 -500
-def eversed(no):
+def reversed(no):
     res=0
     while no:
         num=no%10
@@ -283,7 +309,7 @@ def eversed(no):
         no=no//10
     return res
 
-result=list(filter(lambda x:eversed(x)==x,[i for i in range(100,200)]))
+result=list(filter(lambda x:reversed(x)==x,[i for i in range(100,200)]))
 print(result)
 
 list_no=[i for i in range(101,201) if str(i)==str(i)[::-1]]
