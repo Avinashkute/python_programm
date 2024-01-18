@@ -96,7 +96,7 @@ rows = result.fetchall()---> returns them as a list of tuples.
 Q. What are the sessions?
 >>a session refers to the period of time during which a user interacts with a web application or
   website. Sessions are a way to store information about a user across multiple requests and responses.  
-  They allow web applications to maintain state and provide a personalized experience to users
+  They allow web applications to maintain state and provide a personalized experience to users.
 
 
 
@@ -112,6 +112,7 @@ Q. What are the sessions?
              2)There are no clear error messages, and users receive generic error responses.
                 ex:"An unexpected error occurred. Please try again later."
    solution:
+             0)Error occured after recent deployment.
              1)Collaborate with Database team, if any error from there side.
              2)Collected Error Information:log files
              3)Database config
@@ -131,7 +132,14 @@ Q. What are the sessions?
 -can store::1)Text and Binary Data.
             2)media file.
             3)Backup and restore data.
-            4)Straming data.             
+            4)Straming data.   
+
+>>EC2:
+-Elastic compute cloud allows user to run virtual server(instances) for running the application in the cloud
+ where we can adjust diff parametsers such as 
+ CPU,STORAGE,MEMORY,NETWORKING CAPACITY
+ as per the requirement. 
+============================================================================================================         
 
 
 
