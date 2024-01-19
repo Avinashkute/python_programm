@@ -1,3 +1,16 @@
+#find men with grater than 40 age::
+passenger_list = ["Ross 35", "Thomas 42.5", "Rick 55", "Ericson 51", "Josh 45",
+                  "Lara 50", "Preeth 36", "Lily 46", "Ron 41", "John 47",
+                  "Joanna 56", "Arun 42"]
+
+for item in passenger_list:
+    name,age=item.split(' ')
+    if float(age)>50:
+        print(name)
+
+res=[item for item in passenger_list if float(item.split(' ')[1])>50]
+print(res)
+
 #reverse the string::
 input_string = "Avinash is name my"
 #o/p = "Avinash is name my "
