@@ -15,7 +15,7 @@
 
 >>>One to one:
 class person(model.models):
-    name=models.name = models.CharField(max_length=100)
+    name=models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -49,7 +49,7 @@ def __str__(self):
    relational databases        |         NoSQL databases.         
 
 3)high-level query language    |3)raw SQL expressions or query language(diff syntax -queryset API)
-  (queryset API)                    and ORM system
+  (queryset API)and raw sql queries|                 and ORM system
 
 4)less flexible                | 4)highly flexible and can perform fine sql queries.
                                      (execute stored procedure and triggers)
@@ -63,34 +63,79 @@ def __str__(self):
 2)from sqlalchemy import create_engine, Table, MetaData
 
 3)Create a Database Engine:
-  >DATABASE_URL = 'sqlite:///example.db'
-  >engine = create_engine(DATABASE_URL, echo=True)---->echo allows result to print in console.
+  >DATABASE_URL = ''postgresql://your_user:your_password@localhost:5432/other_database''
+  >engine_other_db= create_engine(DATABASE_URL, echo=True)---->echo allows result to print in console.
 
-4)Define metadata and table
- >metadata = MetaData(bind=engine)  --->store the schema information.
- >your_table = Table('your_table', metadata, autoload=True)  -->An instance of Table
+5)Creating a Session Class with sessionmaker::
+ >Session = sessionmaker(bind=engine_other_db)-->indicating that this session class is bound to the 'other_database' engine.
 
-5)Create a Database Connection:
- >connection = engine.connect()
 
+>>you can use Session to create a session instance
+>>session instance can then be used to perform SQLAlchemy queries
 6)Execute a SELECT Query:
 select_query = your_table.select()
-result = connection.execute(select_query)
+result = Session().execute(select_query)
 rows = result.fetchall()---> returns them as a list of tuples.
 
 --------------------------------------------------------------------------------------------
 #django-orm::
->>queryset = MyModel.objects.filter(name='example')
+1)Creating Objects:
+>>obj = MyModel.objects.create(field1=value1, field2=value2)
+
+2)Querying All Objects:
+>>all_objects = MyModel.objects.all()
+
+3)Filtering Objects:
+>>filtered_objects = MyModel.objects.filter(field=value)
 >>queryset = MyModel.objects.filter(name='example', category='example_category')-->AND condition
+>>exact_match_objects = MyModel.objects.filter(field__exact/iexact=value)
 
->>from django.db.models import Q
-  >queryset = MyModel.objects.filter(Q(name='example') | Q(category='example_category'))
->>queryset = MyModel.objects.order_by('name') / ('-name')--> for descending
+4)Chaining filters:
+>>filtered_objects = MyModel.objects.filter(field1=value1).filter(field2__gte=value2)
 
->>Aggergation::
->count = MyModel.objects.count()
->total = MyModel.objects.aggregate(Sum('quantity'))
->average = MyModel.objects.aggregate(Avg('price'))
+5)contains(for substring):
+>>contains_objects = MyModel.objects.filter(field__contains/icontains=value)
+
+5)counts:
+>>count = MyModel.objects.count()
+
+6)aggregate:
+>>total = MyModel.objects.aggregate(Sum('numeric_field'))
+
+7)ordering::
+>>ordered_objects = MyModel.objects.order_by('field1', 'field2')
+>>ordered_objects = MyModel.objects.order_by('-field1')-->for descending
+
+#Updating and Deleting:
+1)Updating Objects:
+>>MyModel.objects.filter(id=1).update(field=value)
+>>MyModel.objects.filter(id=1).delete()
+>>MyModel.objects.all().delete()
+
+#AND ,OR,NOT OPERATOR:
+>>queryset = MyModel.objects.filter(Q(name='example') | Q(category='example_category'),~Q(category='example_category'))
+
+##django-orm on models with relations:
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+author_name = "John Doe"
+>>books_by_author = Book.objects.filter(author__name=author_name)
+
+
+==================================================================================
+how to use raw sql in djago-orm
+1)results = MyModel.objects.raw('SELECT * FROM myapp_mymodel WHERE condition')
+
+2)from django.db.models.expressions import RawSQL
+
+# Example: Using RawSQL in a queryset
+queryset = MyModel.objects.annotate(custom_field=RawSQL('SELECT some_expression FROM some_table WHERE some_condition', []))
+
 
 -----------------------------------------------------------------------------------------
 Q. What are the sessions?
@@ -141,12 +186,16 @@ Q. What are the sessions?
  as per the requirement. 
 ============================================================================================================         
 
+#Encoding::
+>>Text is ultimately stored and transmitted as sequences of bytes.
+>>encode=string-->byte(utf-8,utf-16)
+    to ensure that text data is transmitted, and processed accurately across
+       different systems, languages, and applications
+=======================================================================================
 
-
-
-##PROJECT::
-
-
+#MyModel.objects:
+>>default manager for the model provided by djnago.
+>> contains various methods and querysets  to interact with the database.
 
 
 
