@@ -66,9 +66,8 @@ class TestMyFunction(unittest.TestCase):
     @parameterized.expand([
         (2, 3, 5),
         (-2, -3, -5),
-        (0, 0, 0),
-        # Add more parameter sets as needed
-    ])
+        (0, 0, 0)])
+
     def test_my_function(self, x, y, expected_result):
         result = my_function(x, y)
         self.assertEqual(result, expected_result)

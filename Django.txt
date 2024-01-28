@@ -11,6 +11,12 @@
 >>pip istall -r requirments.txt
 >>pip install -r requirements.txt --upgrade     --(if newly added any dependency)
 
+# Djnago version::
+>>command line: django-admin --version
+>>python script:import django
+                print(django.get_version())
+
+
 #how to create a relationship btween tables in  django:
 
 >>>One to one:
@@ -139,8 +145,9 @@ queryset = MyModel.objects.annotate(custom_field=RawSQL('SELECT some_expression 
 
 -----------------------------------------------------------------------------------------
 Q. What are the sessions?
->>a session refers to the period of time during which a user interacts with a web application or
-  website. Sessions are a way to store information about a user across multiple requests and responses.  
+>>Kind of mechanism used to keep track of website and browsers state.
+   When a user visits a website, the server can create a session for that user
+   Sessions are a way to store information about a user across multiple requests and responses.  
   They allow web applications to maintain state and provide a personalized experience to users.
 
 
