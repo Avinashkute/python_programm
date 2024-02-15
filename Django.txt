@@ -179,7 +179,8 @@ Q. What are the sessions?
 #AWS::
 
 >>S3:::
--s3 is an object storage service provided by AWS which stores data as object.
+- S3 is a scalable object storage service that developers use to store and retrieve data ,
+-which stores data as object
 -highly scalable,can store an unlimited number of objects.
 -can store::1)Text and Binary Data.
             2)media file.
@@ -204,10 +205,30 @@ Q. What are the sessions?
 >>default manager for the model provided by djnago.
 >> contains various methods and querysets  to interact with the database.
 
+======================================================================================
+
+##Crete stored procedure::
+>>CREATE PROCEDURE GetEmployeeByID
+    @EmployeeID INT
+  AS
+  BEGIN
+     SELECT * FROM employees WHERE id = @EmployeeID;
+  END
+
+==================================================================
+
+## RESTAPI::
+>>A RESTful API (Representational State Transfer Application Programming Interface) 
+    is a type of web service that follows the principles of REST architecture 
+    and makes use fo http methods for commi=unucationg with other systems.
+
+>> REST is an architectural style for designing networked applications OR WEB SERVICES
 
 
-
-
+  #API Auth::
+     >>API authentication is the process of verifying the identity of clients or users who access an API.
+    1)API Keys::unique identifiers-->include in request-->validated by server-->grant access to the requested resources.
+    2)Token-Based Authentication:: issuing a unique token to authenticated users.
 
 
 
