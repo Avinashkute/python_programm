@@ -215,10 +215,10 @@ Q. What are the sessions?
      SELECT * FROM employees WHERE id = @EmployeeID;
   END
 
-==================================================================
+======================================================================================
 
 ## RESTAPI::
->>A RESTful API (Representational State Transfer Application Programming Interface) 
+>>  A RESTful API (Representational State Transfer Application Programming Interface) 
     is a type of web service that follows the principles of REST architecture 
     and makes use fo http methods for commi=unucationg with other systems.
 
@@ -230,7 +230,27 @@ Q. What are the sessions?
     1)API Keys::unique identifiers-->include in request-->validated by server-->grant access to the requested resources.
     2)Token-Based Authentication:: issuing a unique token to authenticated users.
 
+==================================================================================================
 
+# WHY RESTAPI::
+        Using Django REST Framework can significantly streamline the process and provide additional features 
+          and flexibility for building robust and scalable APIs.
+>>Built-in Serializers
+>>Class-based Views
+>> built-in support for Authentication and Permissions(e.g., token authentication, session authentication, OAuth)
+>>Browsable API--web-based user interface for exploring and interacting with your API endpoints directly from a browser. 
+==================================================================================================
+
+#Roles and responsibility::
+
+>>Requirement understanding and analysis.
+>>Designing and Developing Server-Side Logic(including APIs, business logic, data processing, and integration with databases)
+>>Building RESTful APIs
+>>Database Management(Developing database schemas, writing SQL queries,django-orm)
+>>Unittesing and Debugging
+>>EDA
+>>client intreaction.
+==================================================================================================
 
 
 
